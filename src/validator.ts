@@ -1,4 +1,5 @@
 import type { NextFunction, Request, Response } from 'express';
+import {WeightUnits, HeightUnits} from './bmi';
 
 /**
  * The middleware should check if the payload valid
@@ -41,7 +42,7 @@ export default function validator(req: Request, res: Response, next: NextFunctio
     if(Number(weightUnit) < 0 && Number(weightUnit) > 2) {
         res.status(401).send({message: 'weightUnit should be 0-2'});
     }
-    if(Number(heightUnit) < 0 && Number(heightUnit) > 3) {
+    if(Number(heightUnit) < 0 && Number(heightUnit) > 3 ) {
         res.status(401).send({message: 'heightUnit should be 0-3'});
     }
     next();

@@ -7,10 +7,22 @@ import type { NextFunction, Request, Response } from 'express';
  * @param next
  */
 export default function validator(req: Request, res: Response, next: NextFunction) {
-    const weight = req.query?.weight as unknown as string;
-    const height = req.query?.height as unknown as string;
-    const weightUnit = req.query?.weightUnit;
-    const heightUnit = req.query?.heightUnit;
+    let weight = undefined;
+    let height = undefined;
+    let  weightUnit = undefined;
+    let heightUnit = undefined;
+    if(req.method === 'POST') {
+         weight= req.body?.weight;
+        height = req.body?.height;
+         weightUnit = req.body?.weightUnit;
+        heightUnit = req.body?.heightUnit;
+    }
+    else {
+        weight = req.query?.weight as unknown as string;
+        height = req.query?.height as unknown as string;
+        weightUnit = req.query?.weightUnit;
+        heightUnit = req.query?.heightUnit;
+    }
     if(!weight || !height || !weightUnit || !heightUnit) {
         res.status(401).send({message: 'missing inputs'});
     }

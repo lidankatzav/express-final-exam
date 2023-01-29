@@ -7,4 +7,4 @@ app.use(express.static('public'));
 app.use(express.json());
 
 // starting the application
-app.listen(3002, () => console.log('Server is listening'));
+app.listen(3003, () => console.log('Server is listening'));

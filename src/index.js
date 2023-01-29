@@ -9,4 +9,4 @@ const app_1 = __importDefault(require("./app"));
 app_1.default.use(express_1.default.static('public'));
 app_1.default.use(express_1.default.json());
 // starting the application
-app_1.default.listen(3002, () => console.log('Server is listening'));
+app_1.default.listen(3003, () => console.log('Server is listening'));

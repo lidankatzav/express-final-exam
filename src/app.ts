@@ -4,7 +4,10 @@ import validator from './validator';
 
 const app = express();
 
+app.use(express.json());
+
 app.use('/bmi', validator);
+
 
 app.get('/bmi', function(req, res){
     const weight= req.query.weight;
@@ -14,7 +17,7 @@ app.get('/bmi', function(req, res){
     res.send(bmi({weight: Number(weight), height: Number(height), weightUnit: Number(weightUnit), heightUnit: Number(heightUnit)}));
 });
 
-app.post('bmi', function(req, res){
+app.post('/bmi', function(req, res){
     const weight= req.body.weight;
     const height = req.body.height;
     const weightUnit = req.body.weightUnit;

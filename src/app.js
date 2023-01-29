@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const bmi_1 = __importDefault(require("./bmi"));
 const validator_1 = __importDefault(require("./validator"));
 const app = (0, express_1.default)();
+app.use(express_1.default.json());
 app.use('/bmi', validator_1.default);
 app.get('/bmi', function (req, res) {
     const weight = req.query.weight;
@@ -15,7 +16,7 @@ app.get('/bmi', function (req, res) {
     const heightUnit = req.query.heightUnit;
     res.send((0, bmi_1.default)({ weight: Number(weight), height: Number(height), weightUnit: Number(weightUnit), heightUnit: Number(heightUnit) }));
 });
-app.post('bmi', function (req, res) {
+app.post('/bmi', function (req, res) {
     const weight = req.body.weight;
     const height = req.body.height;
     const weightUnit = req.body.weightUnit;
